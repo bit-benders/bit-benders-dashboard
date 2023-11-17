@@ -7,6 +7,16 @@ import { Box, Image, Text, Grid, Flex, Button, Input } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 
 function IssueCredentialsPage() {
+  const storedUser = localStorage.getItem('user')
+  console.log(storedUser)
+  // if (storedUser) {
+  //   userStore.setState({
+  //     loggedIn: true,
+  //     loginType: 'WALLET',
+  //     username: storedUser.verifiedCredentials[0].address,
+  //     wallet_address: storedUser.verifiedCredentials[0].address,
+  //   });
+  // }
   const { loggedIn } = userStore();
   const router = useRouter();
 
