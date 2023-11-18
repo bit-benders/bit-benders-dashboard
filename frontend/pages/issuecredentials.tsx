@@ -5,12 +5,14 @@ import userStore from "@/stores/userStore";
 import theme from "@/styles/theme";
 import { Box, Image, Text, Grid, Flex, Button, Input } from "@chakra-ui/react";
 import { useRouter } from "next/router";
+import { useState, useEffect } from "react";
 
 
 import { createCredential } from "@/polygonid-sdk";
 
 function IssueCredentialsPage() {
-  const { loggedIn } = userStore();
+  const storedUserLogIn = localStorage.getItem('loggedIn')
+  const loggedIn = storedUserLogIn ? true : false
   const router = useRouter();
 
   const handleCreateCredential = async () => {
@@ -56,7 +58,7 @@ function IssueCredentialsPage() {
                   ISSUE AGE CREDENTIAL
                 </Button>
                 <Box justifyContent="center" display="flex" padding={10}>
-                  <Image src="/demo-issuer-qr.png" alt="issuer qr code" w={200} h={200}/>
+                  <Image src="/demo-issuer-qr.png" alt="issuer qr code" w={200} h={200} />
                 </Box>
                 <Text
                   fontSize="1rem"
