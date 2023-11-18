@@ -43,6 +43,8 @@ function LoginPage() {
       });
       toast.success("Logged in");
       setLoginInProgress(false);
+      localStorage.setItem('loggedIn', JSON.stringify(user))
+      localStorage.setItem('wallet_address', user.verifiedCredentials[0].address)
     }
   }, [isAuthenticated, loggedIn, router, user, username]);
 

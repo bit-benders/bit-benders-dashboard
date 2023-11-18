@@ -4,12 +4,13 @@ import userStore from "@/stores/userStore";
 import theme from "@/styles/theme";
 import { Box, Image, Flex, Grid, Input, Text, Button } from "@chakra-ui/react";
 import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 
 
 function MyCredentialsPage() {
-  const { loggedIn } = userStore();
+  const storedUserLogIn = localStorage.getItem('loggedIn')
+  const loggedIn = storedUserLogIn ? true : false
   const router = useRouter();
-
 
 
   return (
