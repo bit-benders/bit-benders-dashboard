@@ -11,3 +11,4 @@ Alan
 
 Vince 
 - [] ceptor club -> schema 
+- [] events page for verifier 
