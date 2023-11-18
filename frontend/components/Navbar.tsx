@@ -25,7 +25,12 @@ import { useState } from "react";
 import { useDynamicContext } from "@dynamic-labs/sdk-react-core";
 
 export const Navbar: React.FC = () => {
-  const { loggedIn, loginType, wallet_address } = userStore();
+  const storedUserLogIn = localStorage.getItem('loggedIn')
+  const loggedIn = storedUserLogIn ? true : false
+  const storedWallet_address = localStorage.getItem('wallet_address')
+  const wallet_address = storedWallet_address
+  const { loginType } = userStore();
+
   const router = useRouter();
   const { pathname } = useRouter();
   const theme = useTheme();
