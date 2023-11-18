@@ -21,11 +21,10 @@ import {
   Image,
 } from "@chakra-ui/react";
 import ChakraReactSelect from "./ChakraReactSelect";
-import { useForm, Controller } from "react-hook-form";
+import { useForm, Controller, useFieldArray } from "react-hook-form";
 import React, { useEffect, useState } from "react";
 import userStore from "@/stores/userStore";
 import toast from "react-hot-toast";
-import { useFieldArray } from "react-hook-form";
 
 export function CreateCredentialModal() {
   const {
