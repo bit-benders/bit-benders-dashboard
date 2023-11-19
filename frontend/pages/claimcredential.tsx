@@ -1,17 +1,18 @@
-import { Text, Box, Button } from "@chakra-ui/react"
-import { useState } from "react"
+import { Text, Box, Button, Grid, Container } from "@chakra-ui/react"
+import { useEffect, useState } from "react"
 import { useRouter } from "next/router"
 import theme from "@/styles/theme";
+import JSONPretty from "react-json-pretty"
 
 export default function ClaimCredentialsPage() {
   const [isLoaded, setIsLoaded] = useState(false)
-  const [claim, setClaim] = useState({})
+  const [claim, setClaim] = useState<{credentialSchema: string}>()
   const router = useRouter()
   const { userID } = router.query
   console.log(userID)
 
-  const claimToProfile = async () => {
-    const claim = 
+  useEffect(() => {
+    const claimJson = 
     {
       credentialSchema: 'ipfs://QmUDVTBgdemq3YzHRJQvz55M1Xdbu3PzjMnZGj5deKB2vG',
       type: 'demo',
@@ -27,8 +28,11 @@ export default function ClaimCredentialsPage() {
         en8: 8,
         en9: 9
       },
-      expiration: 1893456000,
     }
+    setClaim(claimJson)
+  }, [])
+
+  const claimToProfile = async () => {
 
     setIsLoaded(true);
     try {
@@ -56,29 +60,52 @@ export default function ClaimCredentialsPage() {
     }
 }
     return (
-      <Box>
-        <Text>Claim Page</Text>
-                <Button
-                  onClick={claimToProfile}
-                  variant="outline"
-                  borderColor={theme.colors.primary}
-                  border="2px solid"
-                  borderRadius="1px"
-                  color={theme.colors.primary}
-                  w="100%"
-                  h="3rem"
-                  fontSize="0.8rem"
-                  fontWeight="700"
-                  fontFamily={theme.fonts.body}
-                  _hover={{
-                    color: theme.colors.background,
-                    backgroundColor: theme.colors.primary,
-                    borderColor: theme.colors.primary,
-                  }}
-                >
-                  CLAIM PSYCHOGRAPHIC PROFILE CREDENTIAL
-                </Button>
+      <Box justifyContent="center" alignItems="center" marginTop={10}>
+        {claim && claim.credentialSchema !== undefined && (
+          <Container>
+            <Box textAlign="left">
+              <JSONPretty
+                id="json-pretty"
+                style={{
+                  fontSize: "0.75em",
+                }}
+                data={JSON.stringify(claim)}
+                theme={jsonStyle}
+              ></JSONPretty>
+            </Box>
+            <Button
+              marginTop={8}
+              onClick={claimToProfile}
+              variant="outline"
+              borderColor={theme.colors.primary}
+              border="2px solid"
+              borderRadius="1px"
+              color={theme.colors.primary}
+              w="100%"
+              h="3rem"
+              fontSize="0.8rem"
+              fontWeight="700"
+              fontFamily={theme.fonts.body}
+              _hover={{
+                color: theme.colors.background,
+                backgroundColor: theme.colors.primary,
+                borderColor: theme.colors.primary,
+              }}
+            >
+              CLAIM PSYCHOGRAPHIC PROFILE CREDENTIAL
+            </Button>
+          </Container>
+            )}
       </Box>
       
     )
+}
+
+const jsonStyle = {
+  main: 'line-height:1.3;color:#66d9ef;background:#272822;overflow:auto;',
+  error: 'line-height:1.3;color:#66d9ef;background:#272822;overflow:auto;',
+  key: 'color:#f92672;',
+  string: 'color:#fd971f;',
+  value: 'color:#a6e22e;',
+  boolean: 'color:#ac81fe;',
 }
