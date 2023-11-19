@@ -12,6 +12,10 @@ claim link: https://user-ui:password-ui@issuer-ui.polygonid.me/credentials/scan-
 
 # Getting Started 
 
+### Requirements
+- Go
+- Yarn
+
 ### Issuer
 1. navigate to onchain issuer directory 
 2. create a .env file with the same structure as .env.example ```cp .env.example .env```
