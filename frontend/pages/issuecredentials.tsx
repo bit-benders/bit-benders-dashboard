@@ -18,6 +18,7 @@ function IssueCredentialsPage() {
   const router = useRouter();
   const [claim, setClaim] = useState({})
   const [isLoaded, setIsLoaded] = useState(false)
+  const [QRData, setQRData] = useState('');
 
 
   /*
@@ -79,7 +80,6 @@ function IssueCredentialsPage() {
 }
 
 
-  const [QRData, setQRData] = useState('');
   useEffect(() => {
     let interval: NodeJS.Timer;
     const auth = async () => {
@@ -87,17 +87,16 @@ function IssueCredentialsPage() {
       setQRData(JSON.stringify(await authRequest.json()));
 
       const sessionID = authRequest.headers.get('x-id');
+      console.log(`Session ID: ${sessionID}`)
 
-      /*
       interval = setInterval(async () => {
         try {
           const sessionResponse = await fetch(`http://localhost:6543/api/v1/status?id=${sessionID}`);
-          
+          console.log(JSON.stringify(sessionResponse))
         } catch (e) {
           console.log('err->', e);
         }
       }, 2000);
-      */
     }
     auth();
   },
@@ -177,7 +176,7 @@ function IssueCredentialsPage() {
                     borderColor: theme.colors.primary,
                   }}
                 >
-                  ISSUE NEW AGE CREDENTIAL +
+                  CLAIM PSYCHOGRAPHIC PROFILE CREDENTIAL
                 </Button>
                 <Box justifyContent="center" display="flex" padding={10} >
                   <Box backgroundColor="white" padding={8}>
