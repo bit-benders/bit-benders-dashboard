@@ -5900,9 +5900,9 @@ ffjavascript@0.2.62, ffjavascript@^0.2.48:
     wasmcurves "0.2.2"
     web-worker "^1.2.0"
 
-"ffjavascript@git+https://github.com/iden3/ffjavascript.git#chore/esm-patch":
+"ffjavascript@https://github.com/iden3/ffjavascript.git#chore/esm-patch":
   version "0.2.61"
-  resolved "git+https://github.com/iden3/ffjavascript.git#c4f4d58ad4c05c69facda838c2a081acfc40079f"
+  resolved "https://github.com/iden3/ffjavascript.git#c4f4d58ad4c05c69facda838c2a081acfc40079f"
   dependencies:
     wasmbuilder "0.0.16"
     wasmcurves "0.2.2"
@@ -7948,6 +7948,11 @@ punycode@^2.1.0, punycode@^2.1.1, punycode@^2.3.0:
   resolved "https://registry.yarnpkg.com/punycode/-/punycode-2.3.1.tgz#027422e2faec0b25e1549c3e1bd8309b9133b6e5"
   integrity sha512-vYt7UD1U9Wg6138shLtLOvdAu+8DsC/ilFtEVHcH+wydcSpNE20AfSOduf6MkRFahL5FY7X1oU7nKVZFtfq8Fg==
 
+qrcode.react@^3.1.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/qrcode.react/-/qrcode.react-3.1.0.tgz#5c91ddc0340f768316fbdb8fff2765134c2aecd8"
+  integrity sha512-oyF+Urr3oAMUG/OiOuONL3HXM+53wvuH3mtIWQrYmsXoAq0DkvZp2RYUWFSMFtbdOpuS++9v+WAkzNVkMlNW6Q==
+
 qrcode@1.4.4:
   version "1.4.4"
   resolved "https://registry.yarnpkg.com/qrcode/-/qrcode-1.4.4.tgz#f0c43568a7e7510a55efc3b88d9602f71963ea83"
@@ -8535,9 +8540,9 @@ smart-buffer@^4.2.0:
   resolved "https://registry.yarnpkg.com/smart-buffer/-/smart-buffer-4.2.0.tgz#6e1d71fa4f18c05f7d0ff216dd16a481d0e8d9ae"
   integrity sha512-94hK0Hh8rPqQl2xXc3HsaBoOXKV20MToPkcXvwbISWLEs+64sBq5kFgn2kJDHb1Pry9yrP0dxrCI9RRci7RXKg==
 
-"snarkjs@git+https://github.com/iden3/snarkjs.git#chore/esm-patch":
+"snarkjs@https://github.com/iden3/snarkjs.git#chore/esm-patch":
   version "0.7.1"
-  resolved "git+https://github.com/iden3/snarkjs.git#76ec3dba720903f6a60983c5f09eb673a8c019fb"
+  resolved "https://github.com/iden3/snarkjs.git#76ec3dba720903f6a60983c5f09eb673a8c019fb"
   dependencies:
     "@iden3/binfileutils" "0.0.11"
     bfj "^7.0.2"

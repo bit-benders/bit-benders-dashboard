@@ -9,6 +9,9 @@ import { useState, useEffect } from "react";
 
 import { createCredential } from "@/polygonid-sdk";
 
+import { QRCode } from "@/components";
+
+
 function IssueCredentialsPage() {
   const storedUserLogIn = localStorage.getItem('loggedIn')
   const loggedIn = storedUserLogIn ? true : false
@@ -22,6 +25,30 @@ function IssueCredentialsPage() {
     const credentialRequest = await createCredential(schema, did);
     console.log(credentialRequest);
   };
+
+
+  const [QRData, setQRData] = useState('');
+  useEffect(() => {
+    let interval: NodeJS.Timer;
+    const auth = async () => {
+      const authRequest = await fetch('http://localhost:6543/api/v1/requests/auth');
+      setQRData(JSON.stringify(await authRequest.json()));
+
+      const sessionID = authRequest.headers.get('x-id');
+
+      interval = setInterval(async () => {
+        try {
+          const sessionResponse = await fetch(`http://localhost:6543/api/v1/status?id=${sessionID}`);
+          
+        } catch (e) {
+          console.log('err->', e);
+        }
+      }, 2000);
+    }
+    auth();
+  },
+  []);
+
 
   return (
     <>
@@ -75,13 +102,10 @@ function IssueCredentialsPage() {
                 >
                   ISSUE NEW AGE CREDENTIAL +
                 </Button>
-                <Box justifyContent="center" display="flex" padding={10}>
-                  <Image
-                    src="/demo-issuer-qr.png"
-                    alt="issuer qr code"
-                    w={200}
-                    h={200}
-                  />
+                <Box justifyContent="center" display="flex" padding={10} >
+                  <Box backgroundColor="white" padding={8}>
+                    <QRCode value={QRData}/>
+                  </Box>
                 </Box>
                 {/* <Text
                   fontSize="1rem"
