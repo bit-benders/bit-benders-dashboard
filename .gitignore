@@ -58,10 +58,10 @@ bin/
 .env-issuer
 .env-ui
 
-infrastructure/local/.vault/data
-infrastructure/local/.vault/plugins
-infrastructure/local/.vault/policies
-infrastructure/local/.vault/file
+issuer-node/infrastructure/local/.vault/data
+issuer-node/infrastructure/local/.vault/plugins
+issuer-node/infrastructure/local/.vault/policies
+issuer-node/infrastructure/local/.vault/file
 
 tools/changelog/input.md
 tools/changelog/changelog.md
