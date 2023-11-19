@@ -41,13 +41,13 @@ cp ./resolvers.settings.yaml ./onchain-issuer-demo/resolvers.settings.yaml
 cp ./onchain-issuer.settings.yaml ./onchain-issuer-demo/onchain-issuer.settings.yaml
 
 # Up frontend
-pushd client
-echo NEXT_PUBLIC_ONCHAIN_ISSUER_DID=$ONCHAIN_ISSUER_DID > .env.local
-npm install
-npm run dev > ./../client.log 2>&1 &
-CLIENT_PID=$!
-echo "PID FOR FRONTEND: $CLIENT_PID"
-popd
+#pushd client
+#echo NEXT_PUBLIC_ONCHAIN_ISSUER_DID=$ONCHAIN_ISSUER_DID > .env.local
+#npm install
+#npm run dev > ./../client.log 2>&1 &
+#CLIENT_PID=$!
+#echo "PID FOR FRONTEND: $CLIENT_PID"
+#popd
 
 # Up server for auth
 pushd server
