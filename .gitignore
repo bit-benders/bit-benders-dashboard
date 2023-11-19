@@ -62,6 +62,7 @@ issuer-node/infrastructure/local/.vault/data
 issuer-node/infrastructure/local/.vault/plugins
 issuer-node/infrastructure/local/.vault/policies
 issuer-node/infrastructure/local/.vault/file
+.vault/
 
 tools/changelog/input.md
 tools/changelog/changelog.md
