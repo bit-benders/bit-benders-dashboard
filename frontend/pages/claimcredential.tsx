@@ -3,18 +3,18 @@ import { useEffect, useState } from "react"
 import { useRouter } from "next/router"
 import theme from "@/styles/theme";
 import JSONPretty from "react-json-pretty"
+const credentialJson = require("../schemas/psych-profile.json")
 
 export default function ClaimCredentialsPage() {
   const [isLoaded, setIsLoaded] = useState(false)
   const [claim, setClaim] = useState<{credentialSchema: string}>()
   const router = useRouter()
   const { userID } = router.query
-  console.log(userID)
 
   useEffect(() => {
     const claimJson = 
     {
-      credentialSchema: 'ipfs://QmUDVTBgdemq3YzHRJQvz55M1Xdbu3PzjMnZGj5deKB2vG',
+      credentialSchema: 'https://raw.githubusercontent.com/bit-benders/bit-benders-dashboard/main/onchain-issuer/schemas/psych-profile.json',
       type: 'demo',
       credentialSubject: {
         id: userID,

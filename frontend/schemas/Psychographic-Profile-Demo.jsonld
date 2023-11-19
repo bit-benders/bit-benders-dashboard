@@ -1,0 +1,55 @@
+{
+    "@context": [
+        {
+            "@protected": true,
+            "@version": 1.1,
+            "id": "@id",
+            "type": "@type",
+            "demo": {
+                "@context": {
+                    "@propagate": true,
+                    "@protected": true,
+                    "polygon-vocab": "urn:uuid:4d56bb05-21c0-4d01-a75d-60785ed8c643#",
+                    "xsd": "http://www.w3.org/2001/XMLSchema#",
+                    "en1": {
+                        "@id": "polygon-vocab:en1",
+                        "@type": "xsd:double"
+                    },
+                    "en2": {
+                        "@id": "polygon-vocab:en2",
+                        "@type": "xsd:double"
+                    },
+                    "en3": {
+                        "@id": "polygon-vocab:en3",
+                        "@type": "xsd:double"
+                    },
+                    "en4": {
+                        "@id": "polygon-vocab:en4",
+                        "@type": "xsd:double"
+                    },
+                    "en5": {
+                        "@id": "polygon-vocab:en5",
+                        "@type": "xsd:double"
+                    },
+                    "en6": {
+                        "@id": "polygon-vocab:en6",
+                        "@type": "xsd:double"
+                    },
+                    "en7": {
+                        "@id": "polygon-vocab:en7",
+                        "@type": "xsd:double"
+                    },
+                    "en8": {
+                        "@id": "polygon-vocab:en8",
+                        "@type": "xsd:double"
+                    },
+                    "en9": {
+                        "@id": "polygon-vocab:en9",
+                        "@type": "xsd:double"
+                    }
+                },
+                "@id": "urn:uuid:533c1861-c1a3-43d6-aef8-5bcbd438d5bf"
+            }
+        }
+    ]
+}
