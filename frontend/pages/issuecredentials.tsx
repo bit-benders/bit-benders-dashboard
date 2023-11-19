@@ -16,7 +16,9 @@ function IssueCredentialsPage() {
   const storedUserLogIn = localStorage.getItem('loggedIn')
   const loggedIn = storedUserLogIn ? true : false
   const router = useRouter();
+  const [claim, setClaim] = useState([])
 
+  /*
   const handleCreateCredential = async () => {
     const did =
       "did:polygonid:polygon:mumbai:2qLnmZsqmkVCXWPeKg3iokTXLETkk7JdxYcqcD24LE";
@@ -25,6 +27,8 @@ function IssueCredentialsPage() {
     const credentialRequest = await createCredential(schema, did);
     console.log(credentialRequest);
   };
+  */
+
 
 
   const [QRData, setQRData] = useState('');
@@ -82,6 +86,7 @@ function IssueCredentialsPage() {
                 <CreateCredentialModal />
               </Flex> */}
               <Flex direction="column">
+                {/*
                 <Button
                   onClick={handleCreateCredential}
                   variant="outline"
@@ -102,6 +107,8 @@ function IssueCredentialsPage() {
                 >
                   ISSUE NEW AGE CREDENTIAL +
                 </Button>
+                
+                */}
                 <Box justifyContent="center" display="flex" padding={10} >
                   <Box backgroundColor="white" padding={8}>
                     <QRCode value={QRData}/>

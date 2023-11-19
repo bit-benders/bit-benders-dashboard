@@ -1,0 +1,152 @@
+{
+    "$metadata": {
+        "uris": {
+            "jsonLdContext": "ipfs://QmT24mxfLjvWPMkomk2S7rhfkDfg86vr2CH8WomQY9zCvu"
+        },
+        "version": "1.0",
+        "type": "demo"
+    },
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "description": "demo of psychographic profile credential ",
+    "title": "Psychographic Profile Demo",
+    "properties": {
+        "credentialSubject": {
+            "description": "Stores the data of the credential",
+            "title": "Credential subject",
+            "properties": {
+                "id": {
+                    "description": "Stores the DID of the subject that owns the credential",
+                    "title": "Credential subject ID",
+                    "format": "uri",
+                    "type": "string"
+                },
+                "en1": {
+                    "description": "enneagram type 1 proclivity ",
+                    "title": "enneagram type 1 proclivity ",
+                    "type": "number"
+                },
+                "en2": {
+                    "description": "enneagram type 2 proclivity ",
+                    "title": "enneagram type 2 proclivity ",
+                    "type": "number"
+                },
+                "en3": {
+                    "description": "enneagram type 3 proclivity",
+                    "title": "enneagram type 3 proclivity",
+                    "type": "number"
+                },
+                "en4": {
+                    "description": "enneagram type 4 proclivity ",
+                    "title": "enneagram type 4 proclivity ",
+                    "type": "number"
+                },
+                "en5": {
+                    "description": "enneagram type 5 proclivity ",
+                    "title": "enneagram type 5 proclivity ",
+                    "type": "number"
+                },
+                "en6": {
+                    "description": "enneagram type 6 proclivity ",
+                    "title": "enneagram type 6 proclivity ",
+                    "type": "number"
+                },
+                "en7": {
+                    "description": "enneagram type 7 proclivity ",
+                    "title": "enneagram type 7 proclivity ",
+                    "type": "number"
+                },
+                "en8": {
+                    "description": "enneagram type 8 proclivity ",
+                    "title": "enneagram type 8 proclivity ",
+                    "type": "number"
+                },
+                "en9": {
+                    "description": "enneagram type 9 proclivity ",
+                    "title": "enneagram type 9 proclivity ",
+                    "type": "number"
+                }
+            },
+            "required": [
+                "en1",
+                "en2",
+                "en3",
+                "en4",
+                "en5",
+                "en6",
+                "en7",
+                "en8",
+                "en9"
+            ],
+            "type": "object"
+        },
+        "@context": {
+            "type": [
+                "string",
+                "array",
+                "object"
+            ]
+        },
+        "expirationDate": {
+            "format": "date-time",
+            "type": "string"
+        },
+        "id": {
+            "type": "string"
+        },
+        "issuanceDate": {
+            "format": "date-time",
+            "type": "string"
+        },
+        "issuer": {
+            "type": [
+                "string",
+                "object"
+            ],
+            "format": "uri",
+            "properties": {
+                "id": {
+                    "format": "uri",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "id"
+            ]
+        },
+        "type": {
+            "type": [
+                "string",
+                "array"
+            ],
+            "items": {
+                "type": "string"
+            }
+        },
+        "credentialSchema": {
+            "properties": {
+                "id": {
+                    "format": "uri",
+                    "type": "string"
+                },
+                "type": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "id",
+                "type"
+            ],
+            "type": "object"
+        }
+    },
+    "required": [
+        "credentialSubject",
+        "@context",
+        "id",
+        "issuanceDate",
+        "issuer",
+        "type",
+        "credentialSchema"
+    ],
+    "type": "object"
+}
