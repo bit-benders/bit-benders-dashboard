@@ -16,7 +16,9 @@ function IssueCredentialsPage() {
   const storedUserLogIn = localStorage.getItem('loggedIn')
   const loggedIn = storedUserLogIn ? true : false
   const router = useRouter();
-  const [claim, setClaim] = useState([])
+  const [claim, setClaim] = useState({})
+  const [isLoaded, setIsLoaded] = useState(false)
+
 
   /*
   const handleCreateCredential = async () => {
@@ -29,17 +31,64 @@ function IssueCredentialsPage() {
   };
   */
 
+  const createProfile = async () => {
+    setClaim({
+      credentialSchema: "ipfs://QmUDVTBgdemq3YzHRJQvz55M1Xdbu3PzjMnZGj5deKB2vG",
+      type: 'demo',
+      credentialSubject: {
+        id: 1,
+        en1: 1,
+        en2: 2, 
+        en3: 3,
+        en4: 4,
+        en5: 5,
+        en6: 6,
+        en7: 7,
+        en8: 8,
+        en9: 9
+      }
+    })
+  }
+
+  const claimToProfile = async () => {
+    setIsLoaded(true);
+    try {
+      createProfile();
+      const response = await fetch(`http://localhost:3333/api/v1/identities/${process.env.NEXT_PUBLIC_ONCHAIN_ISSUER_DID}/claims`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(claim),
+      });
+  
+      const data = await response.json();
+      console.log(`data: ${JSON.stringify(response)}`)
+      
+      const credentialResponse = await fetch(`http://localhost:3333/api/v1/identities/${process.env.NEXT_PUBLIC_ONCHAIN_ISSUER_DID}/claims/${data.id}`);
+      const credential = await credentialResponse.json();
+      
+      console.log('credential', credential);
+      
+      router.push(`/offer?claimId=${data.id}&issuer=${credential.issuer}&subject=${credential.credentialSubject.id}`);
+    } catch (error) {
+      console.error('Error making the request:', error);
+    } finally {
+      setIsLoaded(false);
+    }
+}
 
 
   const [QRData, setQRData] = useState('');
   useEffect(() => {
     let interval: NodeJS.Timer;
     const auth = async () => {
-      const authRequest = await fetch('http://localhost:6543/api/v1/requests/auth');
+    const authRequest = await fetch('http://localhost:6543/api/v1/requests/auth');
       setQRData(JSON.stringify(await authRequest.json()));
 
       const sessionID = authRequest.headers.get('x-id');
 
+      /*
       interval = setInterval(async () => {
         try {
           const sessionResponse = await fetch(`http://localhost:6543/api/v1/status?id=${sessionID}`);
@@ -48,6 +97,7 @@ function IssueCredentialsPage() {
           console.log('err->', e);
         }
       }, 2000);
+      */
     }
     auth();
   },
@@ -109,6 +159,26 @@ function IssueCredentialsPage() {
                 </Button>
                 
                 */}
+                <Button
+                  onClick={claimToProfile}
+                  variant="outline"
+                  borderColor={theme.colors.primary}
+                  border="2px solid"
+                  borderRadius="1px"
+                  color={theme.colors.primary}
+                  w="100%"
+                  h="3rem"
+                  fontSize="0.8rem"
+                  fontWeight="700"
+                  fontFamily={theme.fonts.body}
+                  _hover={{
+                    color: theme.colors.background,
+                    backgroundColor: theme.colors.primary,
+                    borderColor: theme.colors.primary,
+                  }}
+                >
+                  ISSUE NEW AGE CREDENTIAL +
+                </Button>
                 <Box justifyContent="center" display="flex" padding={10} >
                   <Box backgroundColor="white" padding={8}>
                     <QRCode value={QRData}/>
