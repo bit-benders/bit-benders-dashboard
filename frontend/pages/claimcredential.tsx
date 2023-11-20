@@ -3,7 +3,6 @@ import { useEffect, useState } from "react"
 import { useRouter } from "next/router"
 import theme from "@/styles/theme";
 import JSONPretty from "react-json-pretty"
-const credentialJson = require("../schemas/psych-profile.json")
 
 export default function ClaimCredentialsPage() {
   const [isLoaded, setIsLoaded] = useState(false)
@@ -14,10 +13,9 @@ export default function ClaimCredentialsPage() {
   useEffect(() => {
     const claimJson = 
     {
-      credentialSchema: 'https://raw.githubusercontent.com/bit-benders/bit-benders-dashboard/main/onchain-issuer/schemas/psych-profile.json',
+      credentialSchema: 'https://raw.githubusercontent.com/bit-benders/bit-benders-dashboard/main/frontend/schemas/Psychographic-Profile-Demo.json',
       type: 'demo',
       credentialSubject: {
-        id: userID,
         en1: 1,
         en2: 2, 
         en3: 3,
@@ -26,7 +24,8 @@ export default function ClaimCredentialsPage() {
         en6: 6,
         en7: 7,
         en8: 8,
-        en9: 9
+        en9: 9,
+        id: userID,
       },
     }
     setClaim(claimJson)
@@ -36,6 +35,7 @@ export default function ClaimCredentialsPage() {
 
     setIsLoaded(true);
     try {
+      console.log(`CLAIM: ${JSON.stringify(claim)}`)
       const response = await fetch(`http://localhost:3333/api/v1/identities/${process.env.NEXT_PUBLIC_ONCHAIN_ISSUER_DID}/claims`, {
         method: 'POST',
         headers: {
@@ -45,7 +45,7 @@ export default function ClaimCredentialsPage() {
       });
   
       const data = await response.json();
-      console.log(`data: ${JSON.stringify(response)}`)
+      console.log(`RESPONSE DATA: ${JSON.stringify(response)}`)
       
       //const credentialResponse = await fetch(`http://localhost:3333/api/v1/identities/${process.env.NEXT_PUBLIC_ONCHAIN_ISSUER_DID}/claims/${data.id}`);
       //const credential = await credentialResponse.json();

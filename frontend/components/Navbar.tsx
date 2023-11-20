@@ -119,6 +119,8 @@ export const Navbar: React.FC = () => {
         >
           MY CREDENTIALS
         </Text>
+        {/*
+        
         <Text
           cursor="pointer"
           fontSize="0.75rem"
@@ -133,6 +135,7 @@ export const Navbar: React.FC = () => {
         >
           ISSUE CREDENTIALS
         </Text>
+        */}
 
         {/* <Text
           cursor="pointer"

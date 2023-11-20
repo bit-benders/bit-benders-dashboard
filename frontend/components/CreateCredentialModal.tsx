@@ -26,6 +26,7 @@ import React, { useEffect, useState } from "react";
 import userStore from "@/stores/userStore";
 import toast from "react-hot-toast";
 import { useFieldArray } from "react-hook-form";
+import { useRouter } from "next/router";
 
 export function CreateCredentialModal() {
   const {
@@ -35,6 +36,7 @@ export function CreateCredentialModal() {
   } = useDisclosure();
 
   const { loggedIn, loginType, username, wallet_address } = userStore();
+  const router = useRouter()
 
   // const [selectedOption, setSelectedOption] = useState<OptionType[]>([]);
   const [takingQuiz, setTakingQuiz] = useState(false);
@@ -51,12 +53,16 @@ export function CreateCredentialModal() {
   const maxMessages = 10;
 
   const onSubmit = async (data: FormData) => {
+    router.push("/issuecredentials")
+
+    /*
     try {
       setTakingQuiz(true);
 
       if (!loggedIn) {
         throw Error("Not logged in");
       }
+
 
       console.log("0");
 
@@ -67,6 +73,7 @@ export function CreateCredentialModal() {
     } finally {
       setTakingQuiz(false);
     }
+    */
   };
 
   return (

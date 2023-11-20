@@ -43,7 +43,7 @@ function IssueCredentialsPage() {
         } catch (e) {
           console.log('err->', e);
         }
-      }, 10000);
+      }, 2000);
     }
     auth();
     return () => clearInterval(interval)
