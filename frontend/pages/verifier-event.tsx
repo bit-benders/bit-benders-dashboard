@@ -1,50 +1,9 @@
 import React from 'react';
 import { render } from 'react-dom';
-import { QRCode } from 'react-qr-svg';
+import QRCode from 'qrcode.react';
+import { ChakraProvider, Box, Heading, Flex, Text, Button } from '@chakra-ui/react';
 
-const styles = {
-    root: {
-        fontFamily: 'sans-serif',
-        marginTop: '2em', // Add space for the event title
-        backgroundColor: '#040a31', // Background color
-        color: 'white', // Text color
-        padding: '1em', // Add padding for better spacing
-    },
-    h1: {
-        textAlign: 'center',
-        fontWeight: 'bold',
-    },
-    navBar: {
-        display: 'flex',
-        justifyContent: 'space-around',
-        alignItems: 'center',
-        height: '5em', // Add space for the navigation bar
-        backgroundColor: '#233eff', // Navigation bar color
-        color: 'white',
-    },
-    navOption: {
-        cursor: 'pointer',
-        fontWeight: 'bold',
-    },
-    eventInfo: {
-        display: 'flex',
-        justifyContent: 'space-between',
-        marginTop: '2em', // Add space above the QR code for event information
-        padding: '0 1em', // Add padding for better spacing
-    },
-    dateAndTime: {
-        textAlign: 'left',
-    },
-    location: {
-        textAlign: 'right',
-    },
-    qrcode: {
-        textAlign: 'center',
-        marginTop: '1em', // Add margin above the QR code
-    },
-};
-
-export default class App extends React.Component {
+class App extends React.Component {
     componentDidMount() { }
 
     handleNavOptionClick(option) {
@@ -54,37 +13,76 @@ export default class App extends React.Component {
 
     render() {
         return (
-            <div style={styles.root}>
-                <h1 style={styles.h1}>D&D Night Hosted by imnotArt</h1>
-                <div style={styles.navBar}>
-                    <div style={styles.navOption} onClick={() => this.handleNavOptionClick('Option 1')}>
+            <Flex
+                direction="column"
+                alignItems="center"
+                backgroundColor="#040a31"
+                color="white"
+                padding="1em"
+                marginTop="2em"
+            >
+                <Heading textAlign="center" fontWeight="bold">
+                    D&D Night Hosted by imnotArt
+                </Heading>
+                <Flex
+                    justifyContent="space-around"
+                    alignItems="center"
+                    height="5em"
+                    backgroundColor="#233eff"
+                    color="white"
+                    marginTop="2em"
+                >
+                    <Button
+                        cursor="pointer"
+                        fontWeight="bold"
+                        onClick={() => this.handleNavOptionClick('Option 1')}
+                    >
                         Register
-                    </div>
-                    <div style={styles.navOption} onClick={() => this.handleNavOptionClick('Option 2')}>
+                    </Button>
+                    <Button
+                        cursor="pointer"
+                        fontWeight="bold"
+                        onClick={() => this.handleNavOptionClick('Option 2')}
+                    >
                         Ceptor Club
-                    </div>
-                    <div style={styles.navOption} onClick={() => this.handleNavOptionClick('Option 3')}>
+                    </Button>
+                    <Button
+                        cursor="pointer"
+                        fontWeight="bold"
+                        onClick={() => this.handleNavOptionClick('Option 3')}
+                    >
                         Humancore
-                    </div>
-                    <div style={styles.navOption} onClick={() => this.handleNavOptionClick('Option 4')}>
+                    </Button>
+                    <Button
+                        cursor="pointer"
+                        fontWeight="bold"
+                        onClick={() => this.handleNavOptionClick('Option 4')}
+                    >
                         PolygonID
-                    </div>
-                    <div style={styles.navOption} onClick={() => this.handleNavOptionClick('Option 5')}>
+                    </Button>
+                    <Button
+                        cursor="pointer"
+                        fontWeight="bold"
+                        onClick={() => this.handleNavOptionClick('Option 5')}
+                    >
                         About
-                    </div>
-                </div>
-                <div style={styles.eventInfo}>
-                    <div style={styles.dateAndTime}>
-                        {/* Add event date and time information here */}
-                        Date: February 29, 2024<br />
-                        Time: 6:00 PM
-                    </div>
-                    <div style={styles.location}>
-                        {/* Add event location information here */}
-                        Location: To Be Revealed
-                    </div>
-                </div>
-                <div style={styles.qrcode}>
+                    </Button>
+                </Flex>
+                <Flex justifyContent="space-between" marginTop="2em" padding="0 1em">
+                    <Box textAlign="left">
+                        <Text>
+                            Date: February 29, 2024
+                            <br />
+                            Time: 6:00 PM
+                        </Text>
+                    </Box>
+                    <Box textAlign="right">
+                        <Text>
+                            Location: To Be Revealed
+                        </Text>
+                    </Box>
+                </Flex>
+                <Box textAlign="center" marginTop="1em">
                     <QRCode
                         level="Q"
                         style={{ width: 256 }}
@@ -94,10 +92,15 @@ export default class App extends React.Component {
                             insider: true,
                         })}
                     />
-                </div>
-            </div>
+                </Box>
+            </Flex>
         );
     }
 }
 
-render(<App />, document.getElementById('root'));
+render(
+    <ChakraProvider>
+        <App />
+    </ChakraProvider>,
+    document.getElementById('root')
+);
