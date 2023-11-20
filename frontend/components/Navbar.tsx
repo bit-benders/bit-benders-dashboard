@@ -117,7 +117,7 @@ export const Navbar: React.FC = () => {
           px="1rem"
           onClick={() => router.push("/mycredentials")}
         >
-          MY CREDENTIALS
+          CREATE CREDENTIALS
         </Text>
         {/*
         
