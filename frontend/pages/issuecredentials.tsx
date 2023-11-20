@@ -37,6 +37,7 @@ function IssueCredentialsPage() {
           console.log(`SESSION RESPONSE: ${JSON.stringify(sessionResponse)}`)
           if (sessionResponse.ok) {
             const data = await sessionResponse.json();
+            console.log("ok ok ok")
             clearInterval(interval);
             router.push(`/claimcredential?userID=${data.id}`);
           }

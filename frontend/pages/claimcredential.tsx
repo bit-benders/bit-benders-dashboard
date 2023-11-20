@@ -3,6 +3,7 @@ import { useEffect, useState } from "react"
 import { useRouter } from "next/router"
 import theme from "@/styles/theme";
 import JSONPretty from "react-json-pretty"
+import Link from "next/link";
 
 export default function ClaimCredentialsPage() {
   const [isLoaded, setIsLoaded] = useState(false)
@@ -27,6 +28,7 @@ export default function ClaimCredentialsPage() {
         en9: 9,
         id: userID,
       },
+      expiration: 1893456000,
     }
     setClaim(claimJson)
   }, [])
@@ -94,6 +96,9 @@ export default function ClaimCredentialsPage() {
             >
               CLAIM PSYCHOGRAPHIC PROFILE CREDENTIAL
             </Button>
+            <Link href="https://user-ui:password-ui@issuer-ui.polygonid.me/credentials/issue?schema=5bfaecfa-29af-44f6-b416-049750a27b73">
+              <Text textColor="white" marginTop={20} align="center">Test Issuer</Text>
+            </Link>
           </Container>
             )}
       </Box>
