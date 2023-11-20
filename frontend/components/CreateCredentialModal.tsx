@@ -79,7 +79,7 @@ export function CreateCredentialModal() {
   return (
     <>
       <Button
-        onClick={onCreateDropModalOpen}
+        onClick={() => router.push("https://ceptorclub-259uy2csf-ceptor.vercel.app/QuizPage")}
         variant="outline"
         borderColor={theme.colors.primary}
         border="2px solid"
