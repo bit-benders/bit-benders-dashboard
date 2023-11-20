@@ -27,6 +27,7 @@ import userStore from "@/stores/userStore";
 import toast from "react-hot-toast";
 import { useFieldArray } from "react-hook-form";
 import { useRouter } from "next/router";
+import Link from "@/node_modules/next/link";
 
 export function CreateCredentialModal() {
   const {
@@ -78,8 +79,9 @@ export function CreateCredentialModal() {
 
   return (
     <>
+    <Link href='https://ceptorclub-259uy2csf-ceptor.vercel.app/QuizPage'>
       <Button
-        onClick={onCreateDropModalOpen}
+        onClick={}
         variant="outline"
         borderColor={theme.colors.primary}
         border="2px solid"
@@ -98,6 +100,7 @@ export function CreateCredentialModal() {
       >
         CREATE PSYCHOGRAPHIC PROFILE +
       </Button>
+    </Link>
       <Modal
         isOpen={isCreateDropModalOpen}
         onClose={onCreateDropModalClose}
