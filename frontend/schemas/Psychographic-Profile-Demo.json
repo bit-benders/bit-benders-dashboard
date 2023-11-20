@@ -2,7 +2,8 @@
     "$metadata": {
         "type": "demo",
         "uris": {
-            "jsonLdContext": "ipfs://QmT24mxfLjvWPMkomk2S7rhfkDfg86vr2CH8WomQY9zCvu"
+            "jsonLdContext": "https://raw.githubusercontent.com/bit-benders/bit-benders-dashboard/main/frontend/schemas/Psychographic-Profile-Demo.jsonld",
+            "jsonSchema": "https://raw.githubusercontent.com/bit-benders/bit-benders-dashboard/main/frontend/schemas/Psychographic-Profile-Demo.json"
         },
         "version": "1.0"
     },
