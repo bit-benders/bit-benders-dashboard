@@ -4,9 +4,11 @@ import { Box, Image, Text, Grid, Flex, Button, Input, Link } from "@chakra-ui/re
 import { QRCode } from "@/components";
 
 import { Navbar } from "@/components/Navbar";
+import { useRouter } from "next/router";
 
 
 function DemoOfferPage() {
+  const router = useRouter()
   return (
     <>
     <Navbar />
@@ -27,6 +29,9 @@ function DemoOfferPage() {
           </Box>
         </Flex>
     </Box>
+    <Link>
+      <Text onClick={() => router.push('/verifierevent')} textColor="white" marginTop={20} align="center">To Event</Text>
+    </Link>
     <Link href="https://user-ui:password-ui@issuer-ui.polygonid.me/credentials/issue?schema=5bfaecfa-29af-44f6-b416-049750a27b73">
       <Text textColor="white" marginTop={20} align="center">Test Issuer</Text>
     </Link>
