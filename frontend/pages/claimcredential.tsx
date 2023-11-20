@@ -4,6 +4,7 @@ import { useRouter } from "next/router"
 import theme from "@/styles/theme";
 import JSONPretty from "react-json-pretty"
 import Link from "next/link";
+import { Navbar } from "@/components/Navbar";
 
 export default function ClaimCredentialsPage() {
   const [isLoaded, setIsLoaded] = useState(false)
@@ -62,6 +63,8 @@ export default function ClaimCredentialsPage() {
     }
 }
     return (
+      <>
+      <Navbar /> 
       <Box justifyContent="center" alignItems="center" marginTop={10}>
         {claim && claim.credentialSchema !== undefined && (
           <Container>
@@ -77,7 +80,7 @@ export default function ClaimCredentialsPage() {
             </Box>
             <Button
               marginTop={8}
-              onClick={claimToProfile}
+              onClick={() => router.push("/demooffer")}
               variant="outline"
               borderColor={theme.colors.primary}
               border="2px solid"
@@ -102,6 +105,7 @@ export default function ClaimCredentialsPage() {
           </Container>
             )}
       </Box>
+      </>
       
     )
 }
