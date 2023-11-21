@@ -13,17 +13,18 @@ claim link: https://user-ui:password-ui@issuer-ui.polygonid.me/credentials/scan-
 # Getting Started 
 
 ### Requirements
-- Go
-- Yarn
+- Install Go
+- Install Yarn
 
-### Issuer
+## Issuer
 1. navigate to onchain issuer directory 
 2. create a .env file with the same structure as .env.example ```cp .env.example .env```
 3. run the issuer ```./run.sh```
 
 ## Frontend
 1. navigate to frontend directory
-2. install dependencies ```yarn install```
-3. run the development server ```yarn dev```
+2. create a .env file with the same structure as .env.example ```cp .env.example .env```
+3. install dependencies ```yarn```
+4. run the development server ```yarn dev```
 
 
