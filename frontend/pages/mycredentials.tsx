@@ -5,6 +5,7 @@ import theme from "@/styles/theme";
 import { Box, Image, Flex, Grid, Input, Text, Button } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import { CreateHumanCoreCredential } from "@/components/CreateHumanCoreCredentail";
 
 
 function MyCredentialsPage() {
@@ -45,6 +46,7 @@ function MyCredentialsPage() {
                 gap="1rem"
               >
                 <CreateCredentialModal />
+                <CreateHumanCoreCredential />
               </Flex>
 
               {/*

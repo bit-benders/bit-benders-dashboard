@@ -96,7 +96,7 @@ export function CreateCredentialModal() {
           borderColor: theme.colors.primary,
         }}
       >
-        CREATE PSYCHOGRAPHIC PROFILE +
+        CREATE PSYCHOGRAPHIC PROFILE WITH CEPTOR CLUB +
       </Button>
       <Modal
         isOpen={isCreateDropModalOpen}
