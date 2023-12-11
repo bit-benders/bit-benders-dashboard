@@ -25,10 +25,10 @@ import { useState } from "react";
 import { useDynamicContext } from "@dynamic-labs/sdk-react-core";
 
 export const Navbar: React.FC = () => {
-  const storedUserLogIn = localStorage.getItem('loggedIn')
-  const loggedIn = storedUserLogIn ? true : false
-  const storedWallet_address = localStorage.getItem('wallet_address')
-  const wallet_address = storedWallet_address
+  const storedUserLogIn = localStorage.getItem("loggedIn");
+  const loggedIn = storedUserLogIn ? true : false;
+  const storedWallet_address = localStorage.getItem("wallet_address");
+  const wallet_address = storedWallet_address;
   const { loginType } = userStore();
 
   const router = useRouter();
@@ -51,7 +51,7 @@ export const Navbar: React.FC = () => {
 
   const handleCopyClick = async () => {
     try {
-      await navigator.clipboard.writeText(wallet_address);
+      await navigator.clipboard.writeText(wallet_address!);
       toast.success("Copied Address");
     } catch (err) {
       console.error("Failed to copy address: ", err);
@@ -119,9 +119,8 @@ export const Navbar: React.FC = () => {
         >
           CREATE CREDENTIALS
         </Text>
-        {/*
-        
-        <Text
+
+        {/* <Text
           cursor="pointer"
           fontSize="0.75rem"
           fontWeight="700"
@@ -133,9 +132,8 @@ export const Navbar: React.FC = () => {
           px="1rem"
           onClick={() => router.push("/issuecredentials")}
         >
-          ISSUE CREDENTIALS
-        </Text>
-        */}
+          CREATE ISSUER
+        </Text> */}
 
         {/* <Text
           cursor="pointer"
@@ -173,7 +171,7 @@ export const Navbar: React.FC = () => {
                   bg: theme.colors.primary,
                 }}
               >
-                {formatUsername(wallet_address)}
+                {formatUsername(wallet_address!)}
               </Button>
             </PopoverTrigger>
 
@@ -217,7 +215,7 @@ export const Navbar: React.FC = () => {
                       bg={theme.colors.black}
                     >
                       <Text color={theme.colors.primary}>
-                        {formatUsername(wallet_address)}
+                        {formatUsername(wallet_address!)}
                       </Text>
                     </Tooltip>
 

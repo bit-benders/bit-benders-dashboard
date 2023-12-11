@@ -36,7 +36,7 @@ export function CreateCredentialModal() {
   } = useDisclosure();
 
   const { loggedIn, loginType, username, wallet_address } = userStore();
-  const router = useRouter()
+  const router = useRouter();
 
   // const [selectedOption, setSelectedOption] = useState<OptionType[]>([]);
   const [takingQuiz, setTakingQuiz] = useState(false);
@@ -53,7 +53,7 @@ export function CreateCredentialModal() {
   const maxMessages = 10;
 
   const onSubmit = async (data: FormData) => {
-    router.push("/issuecredentials")
+    router.push("/issuecredentials");
 
     /*
     try {
@@ -79,7 +79,10 @@ export function CreateCredentialModal() {
   return (
     <>
       <Button
-        onClick={() => router.push("https://ceptorclub-6bejfk6so-ceptor.vercel.app/QuizPage")}
+        onClick={() =>
+          router.push("https://ceptorclub-6bejfk6so-ceptor.vercel.app/QuizPage")
+        }
+        // onClick={onCreateDropModalOpen}
         variant="outline"
         borderColor={theme.colors.primary}
         border="2px solid"

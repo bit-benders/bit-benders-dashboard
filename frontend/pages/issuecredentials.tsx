@@ -11,46 +11,43 @@ import { createCredential } from "@/polygonid-sdk";
 
 import { QRCode } from "@/components";
 
-
 function IssueCredentialsPage() {
-  const storedUserLogIn = localStorage.getItem('loggedIn')
-  const loggedIn = storedUserLogIn ? true : false
+  const storedUserLogIn = localStorage.getItem("loggedIn");
+  const loggedIn = storedUserLogIn ? true : false;
   const router = useRouter();
-  const [QRData, setQRData] = useState('');
-
-
+  const [QRData, setQRData] = useState("");
 
   useEffect(() => {
-    let interval: NodeJS.Timer;
-    const auth = async () => {
-    const authRequest = await fetch('http://localhost:6543/api/v1/requests/auth');
-      const authRequestJson = await authRequest.json()
-      setQRData(JSON.stringify(authRequestJson));
-      console.log(`AUTH REQUEST JSON: ${JSON.stringify(authRequestJson)}`)
+    let intervalId: number;
 
-      const sessionID = authRequest.headers.get('x-id');
-      console.log(`Session ID: ${sessionID}`)
-      interval = setInterval(async () => {
+    const auth = async () => {
+      const authRequest = await fetch(
+        "http://localhost:6543/api/v1/requests/auth"
+      );
+      const authRequestJson = await authRequest.json();
+      const sessionID = authRequest.headers.get("x-id");
+
+      intervalId = window.setInterval(async () => {
         try {
-          console.log(`Session ID: ${sessionID}`)
-          const sessionResponse = await fetch(`http://localhost:6543/api/v1/status?id=${sessionID}`);
-          console.log(`SESSION RESPONSE: ${JSON.stringify(sessionResponse)}`)
+          const sessionResponse = await fetch(
+            `http://localhost:6543/api/v1/status?id=${sessionID}`
+          );
+          const data = await sessionResponse.json();
+
           if (sessionResponse.ok) {
-            const data = await sessionResponse.json();
-            console.log("ok ok ok")
-            clearInterval(interval);
+            window.clearInterval(intervalId);
             router.push(`/claimcredential?userID=${data.id}`);
           }
         } catch (e) {
-          console.log('err->', e);
+          console.error("err->", e);
         }
       }, 2000);
-    }
-    auth();
-    return () => clearInterval(interval)
-  },
-  []);
+    };
 
+    auth();
+
+    return () => window.clearInterval(intervalId);
+  }, [router]);
 
   return (
     <>
@@ -75,9 +72,9 @@ function IssueCredentialsPage() {
               overflowY="auto"
             >
               <Flex direction="column">
-                <Box justifyContent="center" display="flex" padding={10} >
+                <Box justifyContent="center" display="flex" padding={10}>
                   <Box backgroundColor="white" padding={8}>
-                    <QRCode value={QRData}/>
+                    <QRCode value={QRData} />
                   </Box>
                 </Box>
               </Flex>

@@ -1,0 +1,40 @@
+{
+    "$metadata": {
+      "type": "demo",
+      "uris": {
+        "jsonLdContext": "https://raw.githubusercontent.com/bit-benders/bit-benders-dashboard/main/frontend/schemas/Psychographic-Profile-Demo.jsonld",
+        "jsonSchema": "https://raw.githubusercontent.com/bit-benders/bit-benders-dashboard/main/frontend/schemas/Psychographic-Profile-Demo.json"
+      },
+      "version": "1.0"
+    },
+    "$schema": "https://raw.githubusercontent.com/bit-benders/bit-benders-dashboard/main/frontend/schemas/Psychographic-Profile-Demo.json",
+    
+    "description": "demo of psychographic profile credential based on ceptor club",
+    "title": "Psychographic Profile Demo",
+    
+    "@context": "https://www.w3.org/2018/credentials/v1",
+    "id": "http://example.gov/credentials/3732",  
+    "issuanceDate": "2023-11-21T19:23:24Z",  
+    "issuer": {
+      "id": "did:example:76e12ec712ebc6f1c221ebfeb1f"
+    },
+    "type": ["VerifiableCredential", "EnneagramAssessmentCredential"],
+    "expirationDate": "2025-02-28T19:23:24Z",
+    "credentialSubject": {
+      "id": "did:example:123", 
+      "en1": 3,
+      "en2": 2,
+      "en3": 1, 
+      "en4": 0,
+      "en5": 3,
+      "en6": 1,
+      "en7": 2,
+      "en8": 1,
+      "en9": 0
+    },
+    
+    "credentialSchema": {
+      "id": "",
+      "type": "" 
+    }
+  }

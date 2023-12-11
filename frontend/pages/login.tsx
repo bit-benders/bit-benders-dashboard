@@ -29,7 +29,6 @@ function LoginPage() {
 
   const { loggedIn, username, loginType, wallet_address, userProfilePic } =
     userStore();
-  const connection = new web3.Connection(process.env.NEXT_PUBLIC_RPC_URL!);
   const { user, isAuthenticated, handleLogOut } = useDynamicContext();
 
   useEffect(() => {
@@ -43,8 +42,11 @@ function LoginPage() {
       });
       toast.success("Logged in");
       setLoginInProgress(false);
-      localStorage.setItem('loggedIn', JSON.stringify(user))
-      localStorage.setItem('wallet_address', user.verifiedCredentials[0].address)
+      localStorage.setItem("loggedIn", JSON.stringify(user));
+      localStorage.setItem(
+        "wallet_address",
+        user.verifiedCredentials[0].address!
+      );
     }
   }, [isAuthenticated, loggedIn, router, user, username]);
 
